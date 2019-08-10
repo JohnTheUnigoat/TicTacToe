@@ -14,17 +14,17 @@ player_1 = True
 
 
 def print_field():
+    print('    |  1  |  2  |  3  |')
+    print(' ___|_____|_____|_____|')
+
     for i in range(3):
-        print('     |     |')
+        print('    |     |     |     |')
         print(
-            '  ' + cell_states[field[i][0]] + '  |' +
+            ' ' + str(i + 1) + '  |  ' + cell_states[field[i][0]] + '  |' +
             '  ' + cell_states[field[i][1]] + '  |' +
-            '  ' + cell_states[field[i][2]]
+            '  ' + cell_states[field[i][2]] + '  |'
         )
-        if i == 2:
-            print('     |     |')
-        else:
-            print('_____|_____|_____')
+        print(' ___|_____|_____|_____|')
 
 
 def make_move():
