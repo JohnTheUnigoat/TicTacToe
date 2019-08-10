@@ -51,23 +51,47 @@ def make_move():
     x -= 1
     y -= 1
 
-    if field[x][y] != 0:
+    if field[y][x] != 0:
         return False
 
     if player_1:
-        field[x][y] = 1
+        field[y][x] = 1
     else:
-        field[x][y] = 2
+        field[y][x] = 2
 
     player_1 = not player_1
     return True
 
 
-while True:
+def win():
+    for i in range(3):
+        if field[i][0] == field[i][1] == field[i][2] != 0:
+            return True
+        if field[0][1] == field[1][i] == field[2][i] != 0:
+            return True
+
+    if field[0][0] == field[1][1] == field[2][2] != 0:
+        return True
+    if field[2][0] == field[1][1] == field[0][2] != 0:
+        return True
+
+    return False
+
+
+while not win():
+    print_field()
+
     move_successful = False
     while not move_successful:
         move_successful = make_move()
 
-    print_field()
+print_field()
 
-input()
+if player_1:
+    print('Player 2', end='')
+else:
+    print('Player 1', end='')
+
+print(' wins!')
+
+input('Press Enter to exit...')
