@@ -12,6 +12,7 @@ field = [
 
 player_1 = True
 
+
 def print_field():
     for i in range(3):
         print('     |     |')
@@ -26,7 +27,9 @@ def print_field():
             print('_____|_____|_____')
 
 
-def user_input():
+def make_move():
+    global player_1
+
     if player_1:
         print('Player 1', end='')
     else:
@@ -45,11 +48,22 @@ def user_input():
         else:
             break
 
-    return x, y
+    x -= 1
+    y -= 1
+
+    if field[x][y] != 0:
+        return False
+
+    if player_1:
+        field[x][y] = 1
+    else:
+        field[x][y] = 2
+
+    player_1 = not player_1
+    return True
 
 
-x, y = user_input()
-print(x, y)
+make_move()
 print_field()
 
 input()
