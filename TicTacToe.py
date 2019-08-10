@@ -63,7 +63,11 @@ def make_move():
     return True
 
 
-make_move()
-print_field()
+while True:
+    move_successful = False
+    while not move_successful:
+        move_successful = make_move()
+
+    print_field()
 
 input()
